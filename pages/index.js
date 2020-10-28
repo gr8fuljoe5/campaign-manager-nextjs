@@ -1,37 +1,30 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import useSWR from 'swr'
-
-const fetcher = async (url) => {
-  const res = await fetch(url)
-  const data = await res.json();
-  
-  if (res.status !== 200) {
-    throw new Error(data.message)
-  }
-  return data
-};
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
-  const res = await fetch('http://localhost:3000/api/agencies')
-  const agencies = await res.json()
+  const agencyRes = await fetch('http://localhost:3000/api/agencies');
+  const agencies = await agencyRes.json();
   
-  // By returning { props: posts }, the Blog component
-  // will receive `posts` as a prop at build time
+  const advertiserRes = await fetch('http://localhost:3000/api/advertisers');
+  const advertisers = await advertiserRes.json();
+  
+  const campaignRes = await fetch('http://localhost:3000/api/advertisers');
+  const campaigns = await campaignRes.json();
+  
   return {
     props: {
       agencies,
+      advertisers,
+      campaigns
     },
   }
 }
 
 export default function Home(props) {
-  const { data, error } = useSWR(`/api/agencies`, fetcher);
-  console.log('data', data);
-  console.log('error', error);
   console.log('props', props);
+  const {advertisers, agencies, campaigns} = props;
   return (
     <div className={styles.container}>
       <Head>
@@ -41,8 +34,11 @@ export default function Home(props) {
 
       <main className={styles.main}>
         <div>
-          <select>
-            {data && data.map((item, idx) => (
+          <select onChange={e => {
+            console.log(e.target);
+            
+          }}>
+            {agencies && agencies.map((item, idx) => (
                 <option key={`item-${idx}`} value={item.id}>{item.name}</option>
             ))}
           </select>
