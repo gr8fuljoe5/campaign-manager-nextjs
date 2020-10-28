@@ -1,7 +1,37 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import useSWR from 'swr'
 
-export default function Home() {
+const fetcher = async (url) => {
+  const res = await fetch(url)
+  const data = await res.json();
+  
+  if (res.status !== 200) {
+    throw new Error(data.message)
+  }
+  return data
+};
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const res = await fetch('http://localhost:3000/api/agencies')
+  const agencies = await res.json()
+  
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      agencies,
+    },
+  }
+}
+
+export default function Home(props) {
+  const { data, error } = useSWR(`/api/agencies`, fetcher);
+  console.log('data', data);
+  console.log('error', error);
+  console.log('props', props);
   return (
     <div className={styles.container}>
       <Head>
@@ -10,15 +40,13 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
+        <div>
+          <select>
+            {data && data.map((item, idx) => (
+                <option key={`item-${idx}`} value={item.id}>{item.name}</option>
+            ))}
+          </select>
+        </div>
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
