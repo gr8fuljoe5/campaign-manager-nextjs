@@ -25,7 +25,7 @@ const CampaignButton = (props) => {
       disableRipple
       disableElevation
       size="large"
-      onClick={props.handleClick}
+      onClick={props.onClick}
       {...props}
     >
       {props.children}

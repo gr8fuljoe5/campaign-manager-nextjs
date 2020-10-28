@@ -41,7 +41,6 @@ const CampaignGrid = (props) => {
   const classes = useStyles();
   const { data } = props;
   let updatedData = data;
-  const objectToSend = [];
 
   updatedData.forEach((item) => {
     item.isSelected = false;
@@ -53,10 +52,12 @@ const CampaignGrid = (props) => {
 
   const submitPayload = (payload) => {
     const finalPayload = payload.filter((item) => item.isSelected === true);
-    console.log("finalPayload", finalPayload);
-    if (finalPayload.length > 0) {
-      setOpenDialog(true);
-    }
+    console.group("Payload to submit:");
+    console.log(finalPayload);
+    console.groupEnd();
+    // if (finalPayload.length > 0) {
+    //   setOpenDialog(true);
+    // }
   };
 
   const renderTableHeader = () => {
@@ -74,9 +75,9 @@ const CampaignGrid = (props) => {
     );
   };
 
-  const handleSelectChange = (idx) => {
-    console.log("idx", idx);
-  };
+  // const handleSelectChange = (idx) => {
+  //   console.log("idx", idx);
+  // };
 
   const renderTableBody = () => {
     return (

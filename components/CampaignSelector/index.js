@@ -1,43 +1,24 @@
 import Grid from "@material-ui/core/Grid";
-import React, { useEffect, useState } from "react";
-import {
-  ADVERTISER_ENDPOINT,
-  AGENCEY_ENDPOINT,
-  CAMPAIGN_ENDPOINT,
-} from "../../constants/endpoints";
+import React, { useState } from "react";
 import CampaignButton from "../CampaignButton/index";
 import CampaignGrid from "../CampaignGrid";
 import Dropdown from "../Dropdown";
 
-const CampaignSelector = () => {
-  const [agencies, setAgencies] = useState([]);
-  const [advertisers, setAdvertisers] = useState([]);
+const CampaignSelector = (props) => {
+  // const [agencies, setAgencies] = useState(props.agencies);
+  const [advertisers, setAdvertisers] = useState(props.advertisers);
   const [advertiserId, setAdvertiserId] = useState([]);
   const [campaign, setCampaign] = useState([]);
 
-  useEffect(() => {
-    getAgencies();
-  }, []);
-
-  async function getAgencies() {
-    const response = await fetch(AGENCEY_ENDPOINT);
-    const agencyData = await response.json();
-    setAgencies(agencyData);
-  }
-
-  async function getAdvertiser(agencyId) {
-    const response = await fetch(ADVERTISER_ENDPOINT);
-    const advertiserData = await response.json();
-    const filteredData = advertiserData.filter((item) => {
+  function getAdvertiser(agencyId) {
+    const filteredData = props.advertisers.filter((item) => {
       return item.agency_id === agencyId;
     });
     setAdvertisers(filteredData);
   }
 
-  async function getCampaign() {
-    const response = await fetch(CAMPAIGN_ENDPOINT);
-    const campaignData = await response.json();
-    const filteredData = campaignData.filter((item) => {
+  function getCampaign() {
+    const filteredData = props.campaigns.filter((item) => {
       return item.advertiser_id === advertiserId;
     });
     setCampaign(filteredData);
@@ -45,10 +26,12 @@ const CampaignSelector = () => {
 
   const handleAgencyChange = (event) => {
     getAdvertiser(event.target.value);
+    setCampaign([]);
   };
 
   const handleAdvertiserChange = (event) => {
     setAdvertiserId(event.target.value);
+    setCampaign([]);
   };
 
   return (
@@ -56,7 +39,7 @@ const CampaignSelector = () => {
       <Grid item xs={2}>
         <div>
           <Dropdown
-            data={agencies}
+            data={props.agencies}
             handleChange={handleAgencyChange}
             label="Choose and agency..."
           />
@@ -66,8 +49,8 @@ const CampaignSelector = () => {
             label="Choose and advertiser..."
           />
           <CampaignButton
-            handleClick={getCampaign}
-            disabled={agencies.length === 0 || advertisers.length === 0}
+            onClick={getCampaign}
+            // disabled={agencies.length === 0 || advertisers.length === 0}
           >
             Get Campaign
           </CampaignButton>
