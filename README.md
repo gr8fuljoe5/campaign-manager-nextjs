@@ -8,6 +8,8 @@ npm install
 yarn install
 ```
 
+## Getting started
+
 First, run the development server:
 
 ```bash
@@ -16,11 +18,24 @@ npm run dev
 yarn dev
 ```
 
+## Code Coverage
+
+```bash
+yarn test
+# or
+yarn test:watch
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to start managing your campaign.
 
 ## TODO:
 
-- Fix dialog/checkbox bugs
+### Features:
 
-- Clean up styles
-- Clean up CSS and remove inline styles
+- have service respond with updated payload of all data including new items
+  - Clear grid data with new data when user closes dialog
+- Auto check the checkbox when the user edits a row
+
+### Coverage:
+
+- Enhance unit test coverage.
