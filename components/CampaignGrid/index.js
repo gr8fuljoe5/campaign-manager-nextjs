@@ -41,11 +41,13 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const CampaignGrid = (props) => {
-  const [openDialog, setOpenDialog] = useState(false);
+  const [openDialog, setOpenDialog] = useState();
+  const [dialogResponse, setDialogResponse] = useState("");
   const classes = useStyles();
   const { data, onSubmit } = props;
   let updatedData = data;
 
+  // append flag for each item for later use
   updatedData.forEach((item) => {
     item.isSelected = false;
   });
@@ -56,11 +58,17 @@ const CampaignGrid = (props) => {
 
   const submitPayload = async (payload) => {
     const finalPayload = payload.filter((item) => item.isSelected === true);
+    const response = await onSubmit(finalPayload);
     console.group("Payload to submit:");
     console.log(finalPayload);
+    console.log(response);
     console.groupEnd();
-    const response = await onSubmit(finalPayload);
-    setOpenDialog(response);
+    setOpenDialog(true);
+    setDialogResponse(response);
+  };
+
+  const closeDialog = () => {
+    setOpenDialog(false);
   };
 
   const renderTableHeader = () => {
@@ -167,10 +175,14 @@ const CampaignGrid = (props) => {
             submitPayload(updatedData);
           }}
         >
-          Save Campaign (Success)
+          Save Campaign
         </CampaignButton>
       </div>
-      <CampaignDialog openDialog={openDialog} />
+      <CampaignDialog
+        openDialog={openDialog}
+        response={dialogResponse}
+        closeDialog={closeDialog}
+      />
     </section>
   );
 };

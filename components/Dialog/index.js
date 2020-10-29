@@ -1,43 +1,49 @@
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React from "react";
+import { SUCCESS } from "../../constants/responses";
+import CampaignButton from "../Button";
 
 const AlertDialog = (props) => {
-  const [open, setOpen] = React.useState(false);
-
-  useEffect(() => {
-    setOpen(props.openDialog);
-  });
-
+  const { response } = props;
   const handleClose = () => {
-    console.log("handleClose", open);
-    setOpen(false);
+    props.closeDialog();
   };
+
+  console.log(response);
+
+  const title =
+    response.status === SUCCESS ? "Success!!!" : "There was an error!";
+  const description =
+    response.status === SUCCESS
+      ? "All Selected Creatives have been successfully uploaded"
+      : "Please check the console for more information";
 
   return (
     <div>
       <Dialog
-        open={open}
+        open={props.openDialog}
         onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+        aria-labelledby={title}
+        aria-describedby={description}
       >
-        <DialogTitle id="alert-dialog-title">Success!!</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            All Selected Creatives have been successfully uploaded
+            {description}
           </DialogContentText>
+          <CampaignButton
+            onClick={handleClose}
+            color="primary"
+            autoFocus
+            style={{ width: "100%" }}
+          >
+            Close
+          </CampaignButton>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Agree
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );
@@ -45,6 +51,7 @@ const AlertDialog = (props) => {
 
 AlertDialog.propTypes = {
   openDialog: PropTypes.bool,
+  response: PropTypes.object,
 };
 
 export default AlertDialog;

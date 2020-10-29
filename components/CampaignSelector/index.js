@@ -42,7 +42,7 @@ const CampaignSelector = (props) => {
 
   return (
     <Grid container spacing={5}>
-      <Grid item xs={2}>
+      <Grid item xs={12} md={2}>
         <aside>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -65,7 +65,7 @@ const CampaignSelector = (props) => {
           </Grid>
         </aside>
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={12} md={10}>
         {campaign.length > 0 && (
           <CampaignGrid data={campaign} onSubmit={submitData} />
         )}
