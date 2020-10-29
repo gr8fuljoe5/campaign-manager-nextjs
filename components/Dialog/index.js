@@ -6,6 +6,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { SUCCESS } from '../../constants/responses';
+import {
+	SUCCESS_TITLE,
+	ERROR_TITLE,
+	SUCCESS_DESCRIPTION,
+	ERROR_DESCRIPTION,
+} from '../../constants/dialog_content';
+
 import CampaignButton from '../Button';
 
 const useStyles = makeStyles(() =>
@@ -17,17 +24,15 @@ const useStyles = makeStyles(() =>
 );
 
 const AlertDialog = props => {
+	const classes = useStyles();
 	const { response } = props;
 	const handleClose = () => {
 		props.closeDialog();
 	};
 
-	const title =
-		response.status === SUCCESS ? 'Success!!!' : 'There was an error!';
+	const title = response.status === SUCCESS ? SUCCESS_TITLE : ERROR_TITLE;
 	const description =
-		response.status === SUCCESS
-			? 'All Selected Creatives have been successfully uploaded'
-			: 'Please check the console for more information';
+		response.status === SUCCESS ? SUCCESS_DESCRIPTION : ERROR_DESCRIPTION;
 
 	return (
 		<div>
