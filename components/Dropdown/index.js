@@ -3,20 +3,18 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
-import React from "react";
+import React, { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 200,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
+    width: "100%",
   },
 }));
 
 const Dropdown = (props) => {
   const classes = useStyles();
+  const [value, setValue] = useState(props.value);
   const { data, label } = props;
 
   return (
@@ -25,8 +23,14 @@ const Dropdown = (props) => {
       <Select
         labelId="select-label"
         id="select"
-        value={props.value}
-        onChange={props.handleChange}
+        value={value}
+        defaultValue={props.value}
+        onChange={(e) => {
+          if (props.handleChange) {
+            props.handleChange(e);
+          }
+          setValue(e.target.value);
+        }}
       >
         {data &&
           data.map((item, idx) => {

@@ -105,7 +105,13 @@ const CampaignGrid = (props) => {
                 />
               </TableCell>
               <TableCell>
-                <Dropdown value={item.status}>
+                {" "}
+                <Dropdown
+                  value={item.status}
+                  handleChange={(e) => {
+                    updateDataRow(idx, "status", e.target.value);
+                  }}
+                >
                   <MenuItem value={true}>Active</MenuItem>
                   <MenuItem value={false}>Inactive</MenuItem>
                 </Dropdown>

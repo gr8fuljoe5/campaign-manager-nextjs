@@ -37,24 +37,30 @@ const CampaignSelector = (props) => {
   return (
     <Grid container spacing={5}>
       <Grid item xs={2}>
-        <div>
-          <Dropdown
-            data={props.agencies}
-            handleChange={handleAgencyChange}
-            label="Choose and agency..."
-          />
-          <Dropdown
-            data={advertisers}
-            handleChange={handleAdvertiserChange}
-            label="Choose and advertiser..."
-          />
-          <CampaignButton
-            onClick={getCampaign}
-            // disabled={agencies.length === 0 || advertisers.length === 0}
-          >
-            Get Campaign
-          </CampaignButton>
-        </div>
+        <aside>
+          <div>
+            <Dropdown
+              data={props.agencies}
+              handleChange={handleAgencyChange}
+              label="Choose and agency..."
+            />
+          </div>
+          <div>
+            <Dropdown
+              data={advertisers}
+              handleChange={handleAdvertiserChange}
+              label="Choose and advertiser..."
+            />
+          </div>
+          <div>
+            <CampaignButton
+              onClick={getCampaign}
+              // disabled={agencies.length === 0 || advertisers.length === 0}
+            >
+              Get Campaign
+            </CampaignButton>
+          </div>
+        </aside>
       </Grid>
       <Grid item xs={10}>
         {campaign.length > 0 && <CampaignGrid data={campaign} />}
