@@ -6,6 +6,7 @@ const CheckboxComponent = props => {
 	return (
 		<Checkbox
 			color="primary"
+			disableRipple
 			{...props}
 			inputProps={{
 				role: 'checkbox',

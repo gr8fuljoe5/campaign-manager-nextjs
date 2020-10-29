@@ -1,4 +1,3 @@
-import Checkbox from '@material-ui/core/Checkbox';
 import MenuItem from '@material-ui/core/MenuItem';
 import { createStyles, makeStyles, withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -14,6 +13,7 @@ import DatePicker from '../DatePicker';
 import CampaignDialog from '../Dialog';
 import Dropdown from '../Dropdown/index';
 import TextField from '../TextField';
+import Checkbox from '../Checkbox';
 
 const useStyles = makeStyles(() =>
 	createStyles({
