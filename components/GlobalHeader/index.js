@@ -4,30 +4,30 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    AppBar: {
-      flexGrow: 1,
-      color: theme.palette.primary.contrastText,
-      backgroundColor: theme.palette.primary.main,
-    },
-    title: {
-      fontSize: theme.typography.h3.fontSize,
-    },
-  })
+const useStyles = makeStyles(theme =>
+	createStyles({
+		AppBar: {
+			flexGrow: 1,
+			color: theme.palette.primary.contrastText,
+			backgroundColor: theme.palette.primary.main,
+		},
+		title: {
+			fontSize: theme.typography.h3.fontSize,
+		},
+	})
 );
 
-const Header = (props) => {
-  const classes = useStyles();
-  return (
-    <AppBar position="static" className={classes.AppBar}>
-      <Toolbar>
-        <Typography variant="h1" className={classes.title}>
-          {props.title}
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  );
+const Header = props => {
+	const classes = useStyles();
+	return (
+		<AppBar position="static" className={classes.AppBar}>
+			<Toolbar>
+				<Typography variant="h1" className={classes.title}>
+					{props.title}
+				</Typography>
+			</Toolbar>
+		</AppBar>
+	);
 };
 
 export default Header;
