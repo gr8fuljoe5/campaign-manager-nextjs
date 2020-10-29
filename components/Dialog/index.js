@@ -4,6 +4,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import PropTypes from "prop-types";
 import React, { useEffect } from "react";
 
 const AlertDialog = (props) => {
@@ -41,6 +42,10 @@ const AlertDialog = (props) => {
       </Dialog>
     </div>
   );
+};
+
+AlertDialog.propTypes = {
+  openDialog: PropTypes.bool,
 };
 
 export default AlertDialog;

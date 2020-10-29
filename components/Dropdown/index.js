@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dropdown = (props) => {
+const CampaignDropDown = (props) => {
   const classes = useStyles();
   const [value, setValue] = useState(props.value);
   const { data, label } = props;
@@ -46,4 +46,4 @@ const Dropdown = (props) => {
   );
 };
 
-export default Dropdown;
+export default CampaignDropDown;

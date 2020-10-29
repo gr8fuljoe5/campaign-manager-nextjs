@@ -6,11 +6,12 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
 import formatter from "../../utils/formatCurrency";
-import CampaignButton from "../CampaignButton";
-import CampaignDialog from "../CampaignDialog";
+import CampaignButton from "../Button";
 import DatePicker from "../DatePicker";
+import CampaignDialog from "../Dialog";
 import Dropdown from "../Dropdown/index";
 import TextField from "../TextField";
 
@@ -55,9 +56,6 @@ const CampaignGrid = (props) => {
     console.group("Payload to submit:");
     console.log(finalPayload);
     console.groupEnd();
-    // if (finalPayload.length > 0) {
-    //   setOpenDialog(true);
-    // }
   };
 
   const renderTableHeader = () => {
@@ -74,10 +72,6 @@ const CampaignGrid = (props) => {
       </TableHead>
     );
   };
-
-  // const handleSelectChange = (idx) => {
-  //   console.log("idx", idx);
-  // };
 
   const renderTableBody = () => {
     return (
@@ -96,7 +90,6 @@ const CampaignGrid = (props) => {
               </TableCell>
               <TableCell>
                 <TextField
-                  disabled={item.isSelected}
                   defaultValue={item.campaign_name}
                   className={classes.input}
                   onChange={(e) => {
@@ -119,16 +112,36 @@ const CampaignGrid = (props) => {
               <TableCell>
                 <TextField
                   defaultValue={formatter.format(item.budget)}
+                  onFocus={(e) => {
+                    console.log("focus");
+                  }}
+                  onBlur={() => {
+                    console.log("blur");
+                  }}
                   onChange={(e) => {
                     updateDataRow(idx, "budget", e.target.value);
                   }}
                 />
               </TableCell>
               <TableCell>
-                <DatePicker selectedDate={item.start_date} />
+                <DatePicker
+                  selectedDate={item.start_date}
+                  onAccept={(moment) => {
+                    updateDataRow(
+                      idx,
+                      "start_date",
+                      moment.format("YYYY-MM-DD")
+                    );
+                  }}
+                />
               </TableCell>
               <TableCell>
-                <DatePicker selectedDate={item.end_date} />
+                <DatePicker
+                  selectedDate={item.end_date}
+                  onAccept={(moment) => {
+                    updateDataRow(idx, "end_date", moment.format("YYYY-MM-DD"));
+                  }}
+                />
               </TableCell>
             </StyledTableRow>
           );
@@ -157,6 +170,10 @@ const CampaignGrid = (props) => {
       <CampaignDialog openDialog={openDialog} />
     </section>
   );
+};
+
+CampaignGrid.propTypes = {
+  data: PropTypes.object,
 };
 
 export default CampaignGrid;

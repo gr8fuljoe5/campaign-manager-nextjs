@@ -1,9 +1,9 @@
-import Input from "@material-ui/core/Input";
+import TextField from "@material-ui/core/TextField";
 import React from "react";
 
-const TextField = (props) => {
+const CampaignTextField = (props) => {
   return (
-    <Input
+    <TextField
       id="outlined-basic"
       variant="outlined"
       defaultValue={props.value}
@@ -13,4 +13,4 @@ const TextField = (props) => {
   );
 };
 
-export default TextField;
+export default CampaignTextField;

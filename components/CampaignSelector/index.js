@@ -1,11 +1,11 @@
 import Grid from "@material-ui/core/Grid";
+import PropTypes from "prop-types";
 import React, { useState } from "react";
-import CampaignButton from "../CampaignButton/index";
+import Button from "../Button";
 import CampaignGrid from "../CampaignGrid";
 import Dropdown from "../Dropdown";
 
 const CampaignSelector = (props) => {
-  // const [agencies, setAgencies] = useState(props.agencies);
   const [advertisers, setAdvertisers] = useState(props.advertisers);
   const [advertiserId, setAdvertiserId] = useState([]);
   const [campaign, setCampaign] = useState([]);
@@ -53,12 +53,7 @@ const CampaignSelector = (props) => {
             />
           </div>
           <div>
-            <CampaignButton
-              onClick={getCampaign}
-              // disabled={agencies.length === 0 || advertisers.length === 0}
-            >
-              Get Campaign
-            </CampaignButton>
+            <Button onClick={getCampaign}>Get Campaign</Button>
           </div>
         </aside>
       </Grid>
@@ -67,6 +62,12 @@ const CampaignSelector = (props) => {
       </Grid>
     </Grid>
   );
+};
+
+CampaignSelector.propTypes = {
+  agencies: PropTypes.object.isRequired,
+  advertisers: PropTypes.object.isRequired,
+  campaigns: PropTypes.object.isRequired,
 };
 
 export default CampaignSelector;

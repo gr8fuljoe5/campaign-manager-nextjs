@@ -26,6 +26,7 @@ const DatePickerComponent = (props) => {
             </InputAdornment>
           ),
         }}
+        {...props}
       />
     </MuiPickersUtilsProvider>
   );

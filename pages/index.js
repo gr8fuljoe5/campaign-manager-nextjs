@@ -1,5 +1,4 @@
 import Grid from "@material-ui/core/Grid";
-import Head from "next/head";
 import CampaignSelector from "../components/CampaignSelector/index";
 import Header from "../components/GlobalHeader";
 
@@ -28,11 +27,6 @@ export default function Home(props) {
   const { advertisers, agencies, campaigns } = props;
   return (
     <div>
-      <Head>
-        <title>Media Math Campaign Manager</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <div>
         <Grid container spacing={5}>
           <Grid item xs={12}>
