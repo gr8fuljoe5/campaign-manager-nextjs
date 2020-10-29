@@ -1,6 +1,8 @@
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
+import { SUBMIT_ENDPOINT } from "../../constants/endpoints";
+import { postData } from "../../utils/fetch";
 import Button from "../Button";
 import CampaignGrid from "../CampaignGrid";
 import Dropdown from "../Dropdown";
@@ -34,31 +36,39 @@ const CampaignSelector = (props) => {
     setCampaign([]);
   };
 
+  const submitData = (payload) => {
+    postData(SUBMIT_ENDPOINT, payload);
+  };
+
   return (
     <Grid container spacing={5}>
       <Grid item xs={2}>
         <aside>
-          <div>
-            <Dropdown
-              data={props.agencies}
-              handleChange={handleAgencyChange}
-              label="Choose and agency..."
-            />
-          </div>
-          <div>
-            <Dropdown
-              data={advertisers}
-              handleChange={handleAdvertiserChange}
-              label="Choose and advertiser..."
-            />
-          </div>
-          <div>
-            <Button onClick={getCampaign}>Get Campaign</Button>
-          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Dropdown
+                data={props.agencies}
+                handleChange={handleAgencyChange}
+                label="Choose an agency..."
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Dropdown
+                data={advertisers}
+                handleChange={handleAdvertiserChange}
+                label="Choose an advertiser..."
+              />
+            </Grid>
+            <Grid item xs={12} style={{ textAlign: "right" }}>
+              <Button onClick={getCampaign}>Get Campaign</Button>
+            </Grid>
+          </Grid>
         </aside>
       </Grid>
       <Grid item xs={10}>
-        {campaign.length > 0 && <CampaignGrid data={campaign} />}
+        {campaign.length > 0 && (
+          <CampaignGrid data={campaign} onSubmit={submitData} />
+        )}
       </Grid>
     </Grid>
   );

@@ -31,6 +31,9 @@ const useStyles = makeStyles(() =>
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
+    height: "10px",
+    fontSize: 12,
+    padding: 0,
     "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.action.hover,
     },
@@ -40,7 +43,7 @@ const StyledTableRow = withStyles((theme) => ({
 const CampaignGrid = (props) => {
   const [openDialog, setOpenDialog] = useState(false);
   const classes = useStyles();
-  const { data } = props;
+  const { data, onSubmit } = props;
   let updatedData = data;
 
   updatedData.forEach((item) => {
@@ -90,6 +93,7 @@ const CampaignGrid = (props) => {
               </TableCell>
               <TableCell>
                 <TextField
+                  size="small"
                   defaultValue={item.campaign_name}
                   className={classes.input}
                   onChange={(e) => {
@@ -98,8 +102,8 @@ const CampaignGrid = (props) => {
                 />
               </TableCell>
               <TableCell>
-                {" "}
                 <Dropdown
+                  size="small"
                   value={item.status}
                   handleChange={(e) => {
                     updateDataRow(idx, "status", e.target.value);
@@ -111,6 +115,7 @@ const CampaignGrid = (props) => {
               </TableCell>
               <TableCell>
                 <TextField
+                  size="small"
                   defaultValue={item.budget}
                   onChange={(e) => {
                     updateDataRow(idx, "budget", parseInt(e.target.value));
@@ -122,6 +127,7 @@ const CampaignGrid = (props) => {
               </TableCell>
               <TableCell>
                 <DatePicker
+                  size="small"
                   selectedDate={item.start_date}
                   onAccept={(moment) => {
                     updateDataRow(
@@ -134,6 +140,7 @@ const CampaignGrid = (props) => {
               </TableCell>
               <TableCell>
                 <DatePicker
+                  size="small"
                   selectedDate={item.end_date}
                   onAccept={(moment) => {
                     updateDataRow(idx, "end_date", moment.format("YYYY-MM-DD"));
@@ -155,10 +162,8 @@ const CampaignGrid = (props) => {
       <div className={classes.buttonWell}>
         <CampaignButton
           onClick={() => {
-            // console.group("send data payload");
-            // console.log(updatedData);
-            // console.groupEnd();
             submitPayload(updatedData);
+            onSubmit(updatedData);
           }}
         >
           Save Campaign (Success)

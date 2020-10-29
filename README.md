@@ -34,4 +34,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - Write unit tests for components
 - Clean up styles
 - Add propTypes to all components
-- CLeanup
+- Clean up CSS and remove inline styles
