@@ -20,11 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to start m
 
 ## TODO:
 
-- Add propTypes to all components
 - Fix dialog/checkbox bugs
-- fix number bug with budget
 
 - Clean up styles
 - Clean up CSS and remove inline styles
-
-

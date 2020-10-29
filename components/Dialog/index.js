@@ -1,3 +1,4 @@
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
@@ -6,6 +7,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SUCCESS } from '../../constants/responses';
 import CampaignButton from '../Button';
+
+const useStyles = makeStyles(() =>
+	createStyles({
+		dialogButton: {
+			width: '100%',
+		},
+	})
+);
 
 const AlertDialog = props => {
 	const { response } = props;
@@ -36,7 +45,7 @@ const AlertDialog = props => {
 						onClick={handleClose}
 						color="primary"
 						autoFocus
-						style={{ width: '100%' }}>
+						className={classes.dialogButton}>
 						Close
 					</CampaignButton>
 				</DialogContent>
