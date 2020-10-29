@@ -50,7 +50,7 @@ export default function Home(props) {
             <Header />
           </Grid>
           <Grid item xs={12}>
-            <main style={{ width: 1600 }}>
+            <main>
               <CampaignSelector
                 advertisers={advertisers}
                 agencies={agencies}

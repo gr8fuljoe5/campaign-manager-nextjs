@@ -12,19 +12,19 @@ const CampaignSelector = (props) => {
   const [advertiserId, setAdvertiserId] = useState([]);
   const [campaign, setCampaign] = useState([]);
 
-  function getAdvertiser(agencyId) {
+  const getAdvertiser = (agencyId) => {
     const filteredData = props.advertisers.filter((item) => {
       return item.agency_id === agencyId;
     });
     setAdvertisers(filteredData);
-  }
+  };
 
-  function getCampaign() {
+  const getCampaign = () => {
     const filteredData = props.campaigns.filter((item) => {
       return item.advertiser_id === advertiserId;
     });
     setCampaign(filteredData);
-  }
+  };
 
   const handleAgencyChange = (event) => {
     getAdvertiser(event.target.value);
@@ -36,13 +36,13 @@ const CampaignSelector = (props) => {
     setCampaign([]);
   };
 
-  const submitData = (payload) => {
-    return postData(SUBMIT_ENDPOINT, payload);
+  const submitData = async (payload) => {
+    return await postData(SUBMIT_ENDPOINT, payload);
   };
 
   return (
     <Grid container spacing={5}>
-      <Grid item xs={12} md={2}>
+      <Grid item xs={12} lg={2}>
         <aside>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -65,7 +65,7 @@ const CampaignSelector = (props) => {
           </Grid>
         </aside>
       </Grid>
-      <Grid item xs={12} md={10}>
+      <Grid item xs={12} lg={10}>
         {campaign.length > 0 && (
           <CampaignGrid data={campaign} onSubmit={submitData} />
         )}

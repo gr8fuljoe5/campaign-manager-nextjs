@@ -60,9 +60,10 @@ const CampaignGrid = (props) => {
     const finalPayload = payload.filter((item) => item.isSelected === true);
     const response = await onSubmit(finalPayload);
     console.group("Payload to submit:");
-    console.log(finalPayload);
-    console.log(response);
+    console.log("Final Payload: ", finalPayload);
+    console.log("Service Response: ", response);
     console.groupEnd();
+    // turn on dialog and send service response to dialog
     setOpenDialog(true);
     setDialogResponse(response);
   };

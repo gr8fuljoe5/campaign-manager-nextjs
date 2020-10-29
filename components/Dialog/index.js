@@ -13,8 +13,6 @@ const AlertDialog = (props) => {
     props.closeDialog();
   };
 
-  console.log(response);
-
   const title =
     response.status === SUCCESS ? "Success!!!" : "There was an error!";
   const description =
