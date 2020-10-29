@@ -6,8 +6,19 @@ import { postData } from '../../utils/fetch';
 import Button from '../Button';
 import CampaignGrid from '../CampaignGrid';
 import Dropdown from '../Dropdown';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(() =>
+	createStyles({
+		buttonWell: {
+			textAlign: 'right',
+			margin: 10,
+		},
+	})
+);
 
 const CampaignSelector = props => {
+	const classes = useStyles();
 	const [advertisers, setAdvertisers] = useState(props.advertisers);
 	const [advertiserId, setAdvertiserId] = useState([]);
 	const [campaign, setCampaign] = useState([]);
@@ -59,7 +70,7 @@ const CampaignSelector = props => {
 								label="Choose an advertiser..."
 							/>
 						</Grid>
-						<Grid item xs={12} style={{ textAlign: 'right' }}>
+						<Grid item xs={12} className={classes.buttonWell}>
 							<Button onClick={getCampaign}>Get Campaign</Button>
 						</Grid>
 					</Grid>
