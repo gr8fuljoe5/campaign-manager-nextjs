@@ -12,7 +12,6 @@ const AlertDialog = (props) => {
 
   useEffect(() => {
     setOpen(props.openDialog);
-    console.log("use effect");
   });
 
   const handleClose = () => {

@@ -8,8 +8,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import formatter from "../../utils/formatCurrency";
 import CampaignButton from "../Button";
+import NumberFormatCustom from "../CurrencyInput/index";
 import DatePicker from "../DatePicker";
 import CampaignDialog from "../Dialog";
 import Dropdown from "../Dropdown/index";
@@ -111,7 +111,7 @@ const CampaignGrid = (props) => {
               </TableCell>
               <TableCell>
                 <TextField
-                  defaultValue={formatter.format(item.budget)}
+                  defaultValue={item.budget}
                   onFocus={(e) => {
                     console.log("focus");
                   }}
@@ -120,6 +120,9 @@ const CampaignGrid = (props) => {
                   }}
                   onChange={(e) => {
                     updateDataRow(idx, "budget", e.target.value);
+                  }}
+                  InputProps={{
+                    inputComponent: NumberFormatCustom,
                   }}
                 />
               </TableCell>
