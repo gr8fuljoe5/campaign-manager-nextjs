@@ -1,3 +1,4 @@
+import MenuItem from "@material-ui/core/MenuItem";
 import { fireEvent, render, screen, within } from "@testing-library/react";
 import DropDown from "./index";
 
@@ -22,16 +23,24 @@ test("renders a Dropdown with a label", () => {
   expect(label).toBeInTheDocument();
 });
 
-test("render a dropdown with options", async () => {
+test("render a dropdown with options from data source", async () => {
   const { getByRole } = render(
-    <DropDown
-      data={dropdownData}
-      label="Select"
-      inputProps={{ "data-testid": "select-box" }}
-    ></DropDown>
+    <DropDown data={dropdownData} label="Select"></DropDown>
   );
   fireEvent.mouseDown(getByRole("button"));
   const listbox = within(getByRole("listbox"));
   const items = await listbox.findAllByText(/Item #[0-9]:/);
   expect(items).toHaveLength(3);
+});
+
+test("render a dropdown with options from children", () => {
+  const { getByRole } = render(
+    <DropDown label="Select">
+      <MenuItem value="Hello">World!</MenuItem>
+    </DropDown>
+  );
+  fireEvent.mouseDown(getByRole("button"));
+  const listbox = within(getByRole("listbox"));
+  const text = listbox.getByText(/World/);
+  expect(text).toBeInTheDocument();
 });
