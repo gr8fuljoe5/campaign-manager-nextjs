@@ -3,6 +3,7 @@ import { IconButton, InputAdornment } from '@material-ui/core';
 import TodayIcon from '@material-ui/icons/Today';
 import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const DatePickerComponent = props => {
 	const [selectedDate, handleDateChange] = useState(props.selectedDate);

@@ -1,5 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CampaignTextField = props => {
 	return (

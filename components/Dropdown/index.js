@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
 	formControl: {

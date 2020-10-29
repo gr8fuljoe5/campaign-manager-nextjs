@@ -3,6 +3,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme =>
 	createStyles({
