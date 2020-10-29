@@ -31,6 +31,7 @@ const CampaignDropDown = (props) => {
           }
           setValue(e.target.value);
         }}
+        {...props}
       >
         {data &&
           data.map((item, idx) => {

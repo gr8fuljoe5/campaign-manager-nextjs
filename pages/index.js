@@ -47,7 +47,7 @@ export default function Home(props) {
       <div>
         <Grid container spacing={5}>
           <Grid item xs={12}>
-            <Header />
+            <Header title="ABC Company" />
           </Grid>
           <Grid item xs={12}>
             <main>

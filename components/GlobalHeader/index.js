@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const Header = () => {
+const Header = (props) => {
   const classes = useStyles();
   return (
     <AppBar position="static" className={classes.AppBar}>
       <Toolbar>
         <Typography variant="h1" className={classes.title}>
-          ABC Company
+          {props.title}
         </Typography>
       </Toolbar>
     </AppBar>
