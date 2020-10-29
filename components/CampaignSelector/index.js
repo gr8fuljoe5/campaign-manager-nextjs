@@ -1,11 +1,11 @@
-import Grid from "@material-ui/core/Grid";
-import PropTypes from "prop-types";
-import React, { useState } from "react";
-import { SUBMIT_ENDPOINT } from "../../constants/endpoints";
-import { postData } from "../../utils/fetch";
-import Button from "../Button";
-import CampaignGrid from "../CampaignGrid";
-import Dropdown from "../Dropdown";
+import Grid from '@material-ui/core/Grid';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { SUBMIT_ENDPOINT } from '../../constants/endpoints';
+import { postData } from '../../utils/fetch';
+import Button from '../Button';
+import CampaignGrid from '../CampaignGrid';
+import Dropdown from '../Dropdown';
 
 const CampaignSelector = (props) => {
   const [advertisers, setAdvertisers] = useState(props.advertisers);
@@ -59,7 +59,7 @@ const CampaignSelector = (props) => {
                 label="Choose an advertiser..."
               />
             </Grid>
-            <Grid item xs={12} style={{ textAlign: "right" }}>
+            <Grid item xs={12} style={{ textAlign: 'right' }}>
               <Button onClick={getCampaign}>Get Campaign</Button>
             </Grid>
           </Grid>

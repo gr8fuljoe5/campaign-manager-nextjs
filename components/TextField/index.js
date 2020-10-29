@@ -1,5 +1,5 @@
-import TextField from "@material-ui/core/TextField";
-import React from "react";
+import TextField from '@material-ui/core/TextField';
+import React from 'react';
 
 const CampaignTextField = (props) => {
   return (
@@ -7,7 +7,7 @@ const CampaignTextField = (props) => {
       id="outlined-basic"
       variant="outlined"
       defaultValue={props.value}
-      inputProps={{ "aria-label": props.ariaLabel || "" }}
+      inputProps={{ 'aria-label': props.ariaLabel || '' }}
       {...props}
     />
   );

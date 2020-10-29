@@ -15,17 +15,19 @@ import CampaignDialog from '../Dialog';
 import Dropdown from '../Dropdown/index';
 import TextField from '../TextField';
 
-const useStyles = makeStyles(() => createStyles({
-  tableHeader: {
-    '& th': {
-      textAlign: 'left',
+const useStyles = makeStyles(() =>
+  createStyles({
+    tableHeader: {
+      '& th': {
+        textAlign: 'left',
+      },
     },
-  },
-  buttonWell: {
-    textAlign: 'right',
-    margin: 10,
-  },
-}));
+    buttonWell: {
+      textAlign: 'right',
+      margin: 10,
+    },
+  })
+);
 
 const StyledTableRow = withStyles((theme) => ({
   root: {
@@ -135,11 +137,7 @@ const CampaignGrid = (props) => {
               size="small"
               selectedDate={item.start_date}
               onAccept={(moment) => {
-                updateDataRow(
-                  idx,
-                  'start_date',
-                  moment.format('YYYY-MM-DD'),
-                );
+                updateDataRow(idx, 'start_date', moment.format('YYYY-MM-DD'));
               }}
             />
           </TableCell>

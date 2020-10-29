@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import NumberFormat from "react-number-format";
+import PropTypes from 'prop-types';
+import React from 'react';
+import NumberFormat from 'react-number-format';
 
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
@@ -18,7 +18,7 @@ function NumberFormatCustom(props) {
         });
       }}
       decimalScale={2}
-      decimalSeparator={"."}
+      decimalSeparator={'.'}
       thousandSeparator
       isNumericString
       prefix="$"

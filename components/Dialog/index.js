@@ -1,11 +1,11 @@
-import Dialog from "@material-ui/core/Dialog";
-import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import PropTypes from "prop-types";
-import React from "react";
-import { SUCCESS } from "../../constants/responses";
-import CampaignButton from "../Button";
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { SUCCESS } from '../../constants/responses';
+import CampaignButton from '../Button';
 
 const AlertDialog = (props) => {
   const { response } = props;
@@ -14,15 +14,12 @@ const AlertDialog = (props) => {
   };
 
   const title =
-    response.status === SUCCESS ? "Success!!!" : "There was an error!";
+    response.status === SUCCESS ? 'Success!!!' : 'There was an error!';
   const description =
     response.status === SUCCESS
-      ? "All Selected Creatives have been successfully uploaded"
-      : "Please check the console for more information";
+      ? 'All Selected Creatives have been successfully uploaded'
+      : 'Please check the console for more information';
 
-
-
-      
   return (
     <div>
       <Dialog
@@ -40,7 +37,7 @@ const AlertDialog = (props) => {
             onClick={handleClose}
             color="primary"
             autoFocus
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           >
             Close
           </CampaignButton>

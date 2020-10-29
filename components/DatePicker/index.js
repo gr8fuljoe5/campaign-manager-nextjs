@@ -1,8 +1,8 @@
-import MomentUtils from "@date-io/moment";
-import { IconButton, InputAdornment } from "@material-ui/core";
-import TodayIcon from "@material-ui/icons/Today";
-import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
-import React, { useState } from "react";
+import MomentUtils from '@date-io/moment';
+import { IconButton, InputAdornment } from '@material-ui/core';
+import TodayIcon from '@material-ui/icons/Today';
+import { DatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+import React, { useState } from 'react';
 
 const DatePickerComponent = (props) => {
   const [selectedDate, handleDateChange] = useState(props.selectedDate);
