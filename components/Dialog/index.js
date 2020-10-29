@@ -20,6 +20,9 @@ const AlertDialog = (props) => {
       ? "All Selected Creatives have been successfully uploaded"
       : "Please check the console for more information";
 
+
+
+      
   return (
     <div>
       <Dialog

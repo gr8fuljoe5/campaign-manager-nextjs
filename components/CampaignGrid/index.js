@@ -84,9 +84,9 @@ const CampaignGrid = (props) => {
   );
 
   const renderTableBody = () => (
-    <TableBody>
+    <TableBody data-testid="grid-body">
       {updatedData.map((item, idx) => (
-        <StyledTableRow key={`table-row-${idx}`}>
+        <StyledTableRow key={`table-row-${idx}`} data-testid="grid-row">
           <TableCell>
             <Checkbox
               size="small"

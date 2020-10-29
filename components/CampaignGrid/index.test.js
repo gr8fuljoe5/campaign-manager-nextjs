@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import CampaignGrid from './index';
 
 const campaigns = [{
@@ -14,4 +14,10 @@ describe('Campaign Grid', () => {
     const item = screen.getByTestId(/campaign-grid/);
     expect(item).toBeInTheDocument();
   });
+  test('to see if 2 rows render in the grid', async () => {
+    const {getByTestId} = render(<CampaignGrid data={campaigns} onSubmit={() => {}} />);
+    const body = within(getByTestId(/grid-body/));
+    const row = await body.findAllByTestId(/grid-row/);
+    expect(row).toHaveLength(2);
+  })
 });
