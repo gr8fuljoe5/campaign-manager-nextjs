@@ -1,18 +1,35 @@
 import Grid from "@material-ui/core/Grid";
 import CampaignSelector from "../components/CampaignSelector/index";
 import Header from "../components/GlobalHeader";
+import {
+  ADVERTISER_ENDPOINT,
+  AGENCY_ENDPOINT,
+  CAMPAIGN_ENDPOINT,
+} from "../constants/endpoints";
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  // You can use any data fetching library
-  const agencyRes = await fetch("http://localhost:3000/api/agencies");
-  const agencies = await agencyRes.json();
+export async function getStaticProps(context) {
+  // Fetch the three endpoints and make them statically available to props
+  let agencies, advertisers, campaigns;
+  try {
+    const agencyRes = await fetch(AGENCY_ENDPOINT);
+    agencies = await agencyRes.json();
+  } catch (e) {
+    return e;
+  }
 
-  const advertiserRes = await fetch("http://localhost:3000/api/advertisers");
-  const advertisers = await advertiserRes.json();
+  try {
+    const advertiserRes = await fetch(ADVERTISER_ENDPOINT);
+    advertisers = await advertiserRes.json();
+  } catch (e) {
+    return e;
+  }
 
-  const campaignRes = await fetch("http://localhost:3000/api/campaigns");
-  const campaigns = await campaignRes.json();
+  try {
+    const campaignRes = await fetch(CAMPAIGN_ENDPOINT);
+    campaigns = await campaignRes.json();
+  } catch (e) {
+    return e;
+  }
 
   return {
     props: {
