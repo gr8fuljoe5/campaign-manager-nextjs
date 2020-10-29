@@ -1,5 +1,6 @@
 import Checkbox from '@material-ui/core/Checkbox';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CheckboxComponent = props => {
 	return (
@@ -13,5 +14,7 @@ const CheckboxComponent = props => {
 		/>
 	);
 };
+
+CheckboxComponent.propTypes = {};
 
 export default CheckboxComponent;

@@ -13,4 +13,8 @@ const CampaignTextField = props => {
 	);
 };
 
+CampaignTextField.propTypes = {
+	value: PropTypes.string,
+};
+
 export default CampaignTextField;

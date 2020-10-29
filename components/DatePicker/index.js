@@ -32,4 +32,8 @@ const DatePickerComponent = props => {
 	);
 };
 
+DatePickerComponent.propTypes = {
+	selectedDate: PropTypes.string,
+};
+
 export default DatePickerComponent;

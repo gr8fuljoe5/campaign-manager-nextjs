@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
 const CampaignDropDown = props => {
 	const classes = useStyles();
 	const [value, setValue] = useState(props.value);
-	const { data, label } = props;
+	const { data, label, handleChange } = props;
 
 	return (
 		<FormControl className={classes.formControl}>
@@ -26,8 +26,8 @@ const CampaignDropDown = props => {
 				value={value}
 				defaultValue={props.value}
 				onChange={e => {
-					if (props.handleChange) {
-						props.handleChange(e);
+					if (handleChange) {
+						handleChange(e);
 					}
 					setValue(e.target.value);
 				}}
@@ -44,6 +44,16 @@ const CampaignDropDown = props => {
 			</Select>
 		</FormControl>
 	);
+};
+
+CampaignDropDown.propTypes = {
+	data: PropTypes.arrayOf({
+		id: PropTypes.number,
+		name: PropTypes.string,
+	}),
+	label: PropTypes.string,
+	value: PropTypes.string,
+	handleChange: PropTypes.func,
 };
 
 export default CampaignDropDown;
