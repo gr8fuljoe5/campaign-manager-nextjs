@@ -112,14 +112,8 @@ const CampaignGrid = (props) => {
               <TableCell>
                 <TextField
                   defaultValue={item.budget}
-                  onFocus={(e) => {
-                    console.log("focus");
-                  }}
-                  onBlur={() => {
-                    console.log("blur");
-                  }}
                   onChange={(e) => {
-                    updateDataRow(idx, "budget", e.target.value);
+                    updateDataRow(idx, "budget", parseInt(e.target.value));
                   }}
                   InputProps={{
                     inputComponent: NumberFormatCustom,
