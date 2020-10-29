@@ -20,9 +20,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to start m
 
 ## TODO:
 
-- Write unit tests for components
-- Clean up styles
 - Add propTypes to all components
-- Clean up CSS and remove inline styles
 - Fix dialog/checkbox bugs
 - fix number bug with budget
+
+- Clean up styles
+- Clean up CSS and remove inline styles
+
+
