@@ -65,9 +65,9 @@ const CampaignSelector = (props) => {
 };
 
 CampaignSelector.propTypes = {
-  agencies: PropTypes.object.isRequired,
-  advertisers: PropTypes.object.isRequired,
-  campaigns: PropTypes.object.isRequired,
+  agencies: PropTypes.array.isRequired,
+  advertisers: PropTypes.array.isRequired,
+  campaigns: PropTypes.array.isRequired,
 };
 
 export default CampaignSelector;
