@@ -124,7 +124,7 @@ const CampaignGrid = props => {
 							size="small"
 							defaultValue={item.budget}
 							onChange={e => {
-								updateDataRow(idx, 'budget', parseInt(e.target.value));
+								updateDataRow(idx, 'budget', parseFloat(e.target.value));
 							}}
 							InputProps={{
 								inputComponent: NumberFormatCustom,
