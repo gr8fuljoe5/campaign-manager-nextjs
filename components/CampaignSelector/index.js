@@ -37,7 +37,7 @@ const CampaignSelector = (props) => {
   };
 
   const submitData = (payload) => {
-    postData(SUBMIT_ENDPOINT, payload);
+    return postData(SUBMIT_ENDPOINT, payload);
   };
 
   return (

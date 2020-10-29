@@ -1,21 +1,3 @@
-const fetchData = async (endpoint) => {
-  console.log("FETCH DATA", endpoint);
-  const response = await fetch(endpoint);
-  // console.log(response);
-  const data = response.json();
-  console.log(data);
-  return data;
-  // try {
-  //   const response = await fetch(endpoint);
-  //   const data = await response.json();
-  //   console.log(data);
-  //   return data;
-  // } catch (e) {
-  //   console.log("error!");
-  //   return e;
-  // }
-};
-
 const postData = async (endpoint, payload) => {
   const settings = {
     method: "POST",
@@ -23,7 +5,7 @@ const postData = async (endpoint, payload) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    payload,
+    body: JSON.stringify(payload),
   };
   try {
     const fetchResponse = await fetch(endpoint, settings);
@@ -34,4 +16,4 @@ const postData = async (endpoint, payload) => {
   }
 };
 
-export { fetchData, postData };
+export { postData };

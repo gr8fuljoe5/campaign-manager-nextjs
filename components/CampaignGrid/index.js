@@ -54,11 +54,13 @@ const CampaignGrid = (props) => {
     updatedData[idx][field] = value;
   };
 
-  const submitPayload = (payload) => {
+  const submitPayload = async (payload) => {
     const finalPayload = payload.filter((item) => item.isSelected === true);
     console.group("Payload to submit:");
     console.log(finalPayload);
     console.groupEnd();
+    const response = await onSubmit(finalPayload);
+    setOpenDialog(response);
   };
 
   const renderTableHeader = () => {
@@ -163,7 +165,6 @@ const CampaignGrid = (props) => {
         <CampaignButton
           onClick={() => {
             submitPayload(updatedData);
-            onSubmit(updatedData);
           }}
         >
           Save Campaign (Success)
