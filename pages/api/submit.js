@@ -1,5 +1,7 @@
 export default function handler(req, res) {
 	if (req.method === 'POST') {
+		// checking to see if payload arry exists
+		// ideally, there would be more validation
 		if (req.body.length > 0) {
 			res.statusCode = 200;
 			res.setHeader('Content-Type', 'application/json');
