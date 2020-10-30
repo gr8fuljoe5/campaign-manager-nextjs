@@ -1,5 +1,11 @@
 ## Campaign Manager
 
+## Clone Repo
+
+```bash
+git clone git@github.com:gr8fuljoe5/campaign-manager-nextjs.git
+```
+
 ## Dependancies
 
 ```bash
