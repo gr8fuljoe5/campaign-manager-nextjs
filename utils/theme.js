@@ -6,6 +6,9 @@ const theme = createMuiTheme({
     primary: {
       main: 'rgb(168, 82, 222)',
     },
+    secondary: {
+      main: 'rgb(66, 201, 84)',
+    },
   },
   overrides: {
     MuiTextField: {
