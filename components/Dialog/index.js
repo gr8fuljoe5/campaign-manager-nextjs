@@ -25,9 +25,12 @@ const useStyles = makeStyles(() =>
 
 const AlertDialog = props => {
   const classes = useStyles();
-  const { response } = props;
+  const { response, closeDialog, clearCampaign } = props;
   const handleClose = () => {
-    props.closeDialog();
+    closeDialog();
+    if (response.status === SUCCESS) {
+      clearCampaign();
+    }
   };
 
   const title = response.status === SUCCESS ? SUCCESS_TITLE : ERROR_TITLE;
@@ -62,6 +65,8 @@ const AlertDialog = props => {
 AlertDialog.propTypes = {
   openDialog: PropTypes.bool,
   response: PropTypes.object,
+  closeDialog: PropTypes.func,
+  clearCampaign: PropTypes.func,
 };
 
 export default AlertDialog;

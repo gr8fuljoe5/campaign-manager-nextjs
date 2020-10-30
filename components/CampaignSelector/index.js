@@ -51,6 +51,10 @@ const CampaignSelector = props => {
     return await postData(SUBMIT_ENDPOINT, payload);
   };
 
+  const clearCampaign = () => {
+    setCampaign([]);
+  };
+
   return (
     <Grid container spacing={5}>
       <Grid item xs={12} lg={2}>
@@ -78,7 +82,11 @@ const CampaignSelector = props => {
       </Grid>
       <Grid item xs={12} lg={10}>
         {campaign.length > 0 && (
-          <CampaignGrid data={campaign} onSubmit={submitData} />
+          <CampaignGrid
+            data={campaign}
+            onSubmit={submitData}
+            clearCampaign={clearCampaign}
+          />
         )}
       </Grid>
     </Grid>

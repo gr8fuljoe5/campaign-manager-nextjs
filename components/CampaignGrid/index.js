@@ -44,7 +44,7 @@ const CampaignGrid = props => {
   const [openDialog, setOpenDialog] = useState();
   const [dialogResponse, setDialogResponse] = useState('');
   const classes = useStyles();
-  const { data, onSubmit } = props;
+  const { data, onSubmit, clearCampaign } = props;
   const updatedData = data;
 
   // append flag for each item for later use
@@ -171,6 +171,7 @@ const CampaignGrid = props => {
         openDialog={openDialog}
         response={dialogResponse}
         closeDialog={closeDialog}
+        clearCampaign={clearCampaign}
       />
     </section>
   );
