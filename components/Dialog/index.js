@@ -7,61 +7,61 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { SUCCESS } from '../../constants/responses';
 import {
-	SUCCESS_TITLE,
-	ERROR_TITLE,
-	SUCCESS_DESCRIPTION,
-	ERROR_DESCRIPTION,
+  SUCCESS_TITLE,
+  ERROR_TITLE,
+  SUCCESS_DESCRIPTION,
+  ERROR_DESCRIPTION,
 } from '../../constants/dialog_content';
 
 import CampaignButton from '../Button';
 
 const useStyles = makeStyles(() =>
-	createStyles({
-		dialogButton: {
-			width: '100%',
-		},
-	})
+  createStyles({
+    dialogButton: {
+      width: '100%',
+    },
+  })
 );
 
 const AlertDialog = props => {
-	const classes = useStyles();
-	const { response } = props;
-	const handleClose = () => {
-		props.closeDialog();
-	};
+  const classes = useStyles();
+  const { response } = props;
+  const handleClose = () => {
+    props.closeDialog();
+  };
 
-	const title = response.status === SUCCESS ? SUCCESS_TITLE : ERROR_TITLE;
-	const description =
-		response.status === SUCCESS ? SUCCESS_DESCRIPTION : ERROR_DESCRIPTION;
+  const title = response.status === SUCCESS ? SUCCESS_TITLE : ERROR_TITLE;
+  const description =
+    response.status === SUCCESS ? SUCCESS_DESCRIPTION : ERROR_DESCRIPTION;
 
-	return (
-		<div>
-			<Dialog
-				open={props.openDialog}
-				onClose={handleClose}
-				aria-labelledby={title}
-				aria-describedby={description}>
-				<DialogTitle id="alert-dialog-title">{title}</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="alert-dialog-description">
-						{description}
-					</DialogContentText>
-					<CampaignButton
-						onClick={handleClose}
-						color="primary"
-						autoFocus
-						className={classes.dialogButton}>
-						Close
-					</CampaignButton>
-				</DialogContent>
-			</Dialog>
-		</div>
-	);
+  return (
+    <div>
+      <Dialog
+        open={props.openDialog}
+        onClose={handleClose}
+        aria-labelledby={title}
+        aria-describedby={description}>
+        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {description}
+          </DialogContentText>
+          <CampaignButton
+            onClick={handleClose}
+            color="primary"
+            autoFocus
+            className={classes.dialogButton}>
+            Close
+          </CampaignButton>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
 };
 
 AlertDialog.propTypes = {
-	openDialog: PropTypes.bool,
-	response: PropTypes.object,
+  openDialog: PropTypes.bool,
+  response: PropTypes.object,
 };
 
 export default AlertDialog;
