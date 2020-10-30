@@ -48,10 +48,12 @@ const CampaignDropDown = props => {
 };
 
 CampaignDropDown.propTypes = {
-  data: PropTypes.arrayOf({
-    id: PropTypes.number,
-    name: PropTypes.string,
-  }),
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+    })
+  ),
   label: PropTypes.string,
   value: PropTypes.string,
   handleChange: PropTypes.func,
