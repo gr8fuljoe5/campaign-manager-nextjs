@@ -1,11 +1,5 @@
 ## Campaign Manager
 
-## Clone Repo
-
-```bash
-git clone git@github.com:gr8fuljoe5/campaign-manager-nextjs.git
-```
-
 ## Dependancies
 
 ```bash
@@ -27,8 +21,10 @@ yarn dev
 ## Code Coverage
 
 ```bash
-yarn test
+npm run test
+npm run test:watch
 # or
+yarn test
 yarn test:watch
 ```
 
