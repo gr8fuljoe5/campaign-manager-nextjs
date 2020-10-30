@@ -1,14 +1,22 @@
-import { red } from '@material-ui/core/colors';
 import { createMuiTheme } from '@material-ui/core/styles';
 
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
-    error: {
-      main: red.A400,
+    primary: {
+      main: 'rgb(168, 82, 222)',
     },
-    background: {
-      default: '#fff',
+  },
+  overrides: {
+    MuiTextField: {
+      root: {
+        width: '100%',
+      },
+    },
+    MuiButton: {
+      containedPrimary: {
+        border: '1px solid #666',
+      },
     },
   },
 });

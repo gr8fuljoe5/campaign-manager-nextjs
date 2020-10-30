@@ -7,7 +7,6 @@ const CampaignButton = props => {
       variant="contained"
       color="primary"
       disableRipple
-      disableElevation
       size="large"
       onClick={props.onClick}
       {...props}>

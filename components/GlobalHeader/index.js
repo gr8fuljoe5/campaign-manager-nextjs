@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme =>
     AppBar: {
       flexGrow: 1,
       color: theme.palette.primary.contrastText,
-      backgroundColor: theme.palette.primary.main,
+      // backgroundColor: theme.palette.primary.main,
     },
     title: {
       fontSize: theme.typography.h3.fontSize,
