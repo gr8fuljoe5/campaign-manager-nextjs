@@ -7,7 +7,7 @@ import {
   CAMPAIGN_ENDPOINT,
 } from '../constants/endpoints';
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   // Fetch the three endpoints and make them statically available to props
   let agencies, advertisers, campaigns;
   try {

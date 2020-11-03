@@ -19,7 +19,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>Media Math Campaign Manager</title>
+        <title>Campaign Manager</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
